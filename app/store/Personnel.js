@@ -11,6 +11,10 @@ Ext.define('Learn.store.Personnel', {
 
     proxy: {
         type: 'ajax',
-        url: 'resources/personnel.json'
+        url: '/personnel',
+        reader: {
+            type: 'json',
+            rootProperty: 'items'
+        }
     }
 });
