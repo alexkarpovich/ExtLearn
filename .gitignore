@@ -1,3 +1,6 @@
 build
 ext
+workspace.json
+classic.json
+modern.json
 node_modules
