@@ -15,7 +15,8 @@ Ext.define('Learn.view.main.Main', {
 
         'Learn.view.main.MainController',
         'Learn.view.main.MainModel',
-        'Learn.view.main.List'
+        'Learn.view.main.List',
+        'Learn.view.skill.Skill'
     ],
 
     controller: 'main',
@@ -100,5 +101,11 @@ Ext.define('Learn.view.main.Main', {
         bind: {
             html: '{loremIpsum}'
         }
+    }, {
+        title: 'Skills',
+        iconCls: 'fa-book',
+        items: [{
+            xtype: 'app-skill'
+        }]
     }]
 });
