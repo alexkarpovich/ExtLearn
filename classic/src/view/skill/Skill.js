@@ -23,5 +23,9 @@ Ext.define('Learn.view.skill.Skill', {
     	xtype: 'button',
     	text: 'Create',
     	handler: 'onClickCreateSkill'
+    }, {
+    	xtype: 'button',
+    	text: 'Delete',
+    	handler: 'onClickRemoveSkill'
     }]
 });

@@ -40,9 +40,6 @@ app.get('/skill', function(req, res) {
 	
 });
 
-
-
-
 app.post('/skill', function(req, res) {
 	skill = new Skill(req.body);
 

@@ -36,14 +36,14 @@ Ext.define('Learn.view.skill.form.SkillForm', {
 				console.log(skillForm.getFieldValues());
 
 				skillForm.submit({
-                        success: function(form, action) {
-                           Ext.data.StoreManager.lookup('skill').load();
-                           self.up('skill-creation-window').hide();
-                        },
-                        failure: function(form, action) {
-                            Ext.Msg.alert('Failed', action.result.msg);
-                        }
-                    });
+                    success: function(form, action) {
+                       Ext.data.StoreManager.lookup('skill').load();
+                       self.up('skill-creation-window').hide();
+                    },
+                    failure: function(form, action) {
+                        Ext.Msg.alert('Failed', action.result.msg);
+                    }
+                });
 			}
 		}
 	}, {
