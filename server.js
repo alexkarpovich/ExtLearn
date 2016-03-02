@@ -9,11 +9,10 @@ mongoose.connect('mongodb://localhost/learn');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
-  console.log('nigger');
+  console.log('Mongo: DB connected');
 });
 
 var skillSchema = mongoose.Schema({
-	_id: String,
     name: String,
     description: String
 });
@@ -21,18 +20,10 @@ var skillSchema = mongoose.Schema({
 var Skill = mongoose.model('Skill', skillSchema);
 
 app.use(express.static(__dirname));
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.get('/personnel', function(req, res) {
-	res.send({ items: [
-        { name: 'Jean Luc', email: "jeanluc.picard@enterprise.com", phone: "555-111-1111" },
-        { name: 'Worf',     email: "worf.moghsson@enterprise.com",  phone: "555-222-2222" },
-        { name: 'Deanna',   email: "deanna.troi@enterprise.com",    phone: "555-333-3333" },
-        { name: 'Data',     email: "mr.data@enterprise.com",        phone: "555-444-4444" }
-    ]});
-});
+
 
 app.get('/skill', function(req, res) {
 	Skill.find({}, function(err, skills) {
@@ -58,10 +49,11 @@ app.post('/skill/update', function(req, res) {
 });
 
 app.post('/skill/delete', function(req, res) {
-	Skill.find({_id: req.body._id}, function(err, skill) {
-		err && console.log('nigger');
-
-		console.log(skill);
+	var id = '56d70589c07c4a6454f36c38';
+	
+	Skill.remove({_id: id}, function(err) {
+		err && console.log(err);
+		
 		res.send({success: true});
 	});
 });
