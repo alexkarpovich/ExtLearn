@@ -11,6 +11,10 @@ Ext.define('Learn.Application', {
     stores: [
         // TODO: add global / shared stores here
     ],
+
+    controllers: [
+        'Learn.controller.Skill'
+    ],
     
     launch: function () {
         // TODO - Launch the application

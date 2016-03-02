@@ -9,13 +9,7 @@ Ext.define('Learn.view.main.MainController', {
 
     alias: 'controller.main',
 
-    onItemSelected: function (sender, record) {
-        Ext.Msg.confirm('Confirm', 'Are you sure?', 'onConfirm', this);
-    },
-
-    onConfirm: function (choice) {
-        if (choice === 'yes') {
-            //
-        }
+    onNavigationItemClick: function(btn, e, eOpts) {
+        this.redirectTo(btn.itemId);
     }
 });

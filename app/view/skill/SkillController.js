@@ -15,7 +15,7 @@ Ext.define('Learn.view.skill.SkillController', {
 		var skillGrid = this.view.down('skill-list');
 		var selectedItem = skillGrid.selection.data;
 
-		skillGrid.store.remove(selectedItem.id);
+		skillGrid.store.remove(selectedItem._id);
 		skillGrid.store.save();
 	}
 });

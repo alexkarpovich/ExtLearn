@@ -30,20 +30,15 @@ Ext.define('Learn.view.skill.form.SkillForm', {
 		formBind: true, 
 		handler: function() {
 			var skillForm = this.up('skill-form').getForm();
-			var self = this;
+			var skillStore = Ext.data.StoreManager.lookup('skill');
 
 			if (skillForm.isValid()) {
 				console.log(skillForm.getFieldValues());
 
-				skillForm.submit({
-                    success: function(form, action) {
-                       Ext.data.StoreManager.lookup('skill').load();
-                       self.up('skill-creation-window').hide();
-                    },
-                    failure: function(form, action) {
-                        Ext.Msg.alert('Failed', action.result.msg);
-                    }
-                });
+				skillStore.add(skillForm.getFieldValues());
+				skillStore.save();
+
+				this.up('skill-creation-window').hide();
 			}
 		}
 	}, {

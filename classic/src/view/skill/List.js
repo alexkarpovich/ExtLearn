@@ -12,7 +12,7 @@ Ext.define('Learn.view.skill.List', {
 	},
 
 	columns: [
-		{text: 'Id', dataIndex: 'id'},
+		{text: 'Id', dataIndex: '_id'},
 		{text: 'Name', dataIndex: 'name', flex: 1},
 		{text: 'Description', dataIndex: 'description', flex: 1}
 	]

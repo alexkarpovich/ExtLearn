@@ -6,7 +6,7 @@
  * TODO - Replace this content of this view to suite the needs of your application.
  */
 Ext.define('Learn.view.main.Main', {
-    extend: 'Ext.tab.Panel',
+    extend: 'Ext.container.Container',
     xtype: 'app-main',
 
     requires: [
@@ -15,97 +15,55 @@ Ext.define('Learn.view.main.Main', {
 
         'Learn.view.main.MainController',
         'Learn.view.main.MainModel',
-        'Learn.view.main.List',
         'Learn.view.skill.Skill'
     ],
 
     controller: 'main',
-    viewModel: 'main',
+    viewModel: 'main',    
+    layout: {
+        type: 'border'
+    },
 
-    ui: 'navigation',
-
-    tabBarHeaderPosition: 1,
-    titleRotation: 0,
-    tabRotation: 0,
-
-    header: {
-        layout: {
-            align: 'stretchmax'
-        },
-        title: {
+    items: [
+        {
+            xtype: 'panel',
+            region: 'north',
+            cls: 'titlebar',
             bind: {
-                text: '{name}'
-            },
-            flex: 0
-        },
-        iconCls: 'fa-th-list'
-    },
-
-    tabBar: {
-        flex: 1,
-        layout: {
-            align: 'stretch',
-            overflowHandler: 'none'
-        }
-    },
-
-    responsiveConfig: {
-        tall: {
-            headerPosition: 'top'
-        },
-        wide: {
-            headerPosition: 'left'
-        }
-    },
-
-    defaults: {
-        bodyPadding: 20,
-        tabConfig: {
-            plugins: 'responsive',
-            responsiveConfig: {
-                wide: {
-                    iconAlign: 'left',
-                    textAlign: 'left'
-                },
-                tall: {
-                    iconAlign: 'top',
-                    textAlign: 'center',
-                    width: 120
-                }
+                title: 'Nigger'
             }
+        },
+        {
+            xtype: 'menu',
+            region: 'west',
+            floating: false,
+            width: 250,
+            split: true,
+            vertical: true,
+            items: [
+                {
+                    text: 'Home',
+                    itemId: 'home',
+                    glyph: 0xf00c,
+                    listeners: {
+                        click: 'onNavigationItemClick'
+                    }
+                },
+                {
+                    text: 'Skills',
+                    itemId: 'skills',
+                    glyph: 0xf0c0,
+                    listeners: {
+                        click: 'onNavigationItemClick'
+                    }
+                }
+            ]
+        },
+        {
+            region: 'center',
+            xtype: 'container',
+            layout: 'fit',
+            itemId: 'center'
         }
-    },
-
-    items: [{
-        title: 'Home',
-        iconCls: 'fa-home',
-        // The following grid shares a store with the classic version's grid as well!
-        items: [{
-            xtype: 'mainlist'
-        }]
-    }, {
-        title: 'Users',
-        iconCls: 'fa-user',
-        bind: {
-            html: '{loremIpsum}'
-        }
-    }, {
-        title: 'Groups',
-        iconCls: 'fa-users',
-        bind: {
-            html: '{loremIpsum}'
-        }
-    }, {
-        title: 'Settings',
-        iconCls: 'fa-cog',
-        bind: {
-            html: '{loremIpsum}'
-        }
-    }, {
-        title: 'Skills',
-        iconCls: 'fa-book',
-        items: [{
-            xtype: 'app-skill'
-        }]
-    }]
+    ]
 });
