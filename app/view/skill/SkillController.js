@@ -11,11 +11,10 @@ Ext.define('Learn.view.skill.SkillController', {
 		window.show();
 	},
 
-	onClickRemoveSkill: function() {
-		var skillGrid = this.view.down('skill-list');
-		var selectedItem = skillGrid.selection.data;
-		
-		skillGrid.store.remove(selectedItem._id);
-		skillGrid.store.save();
+	onClickRemoveSkill: function() {	
+		var skillGrid = this.view.down('skill-list')
+		var selection = skillGrid.getSelectionModel().getSelection()[0];
+
+		skillGrid.store.remove(selection);
 	}
 });

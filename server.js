@@ -27,20 +27,20 @@ app.use(bodyParser.json());
 
 app.get('/skill', function(req, res) {
 	Skill.find({}, function(err, skills) {
-		res.send({ success: true, items: skills});	
+		res.send({ success: true, data: skills});	
 	});
 	
 });
 
 app.post('/skill/add', function(req, res) {
-	req.body._id = null;
+	delete req.body._id;
 
 	skill = new Skill(req.body);
 
 	skill.save(function (err, skill) {
 		if (err) return console.error(err);
 
-		res.send({success: true, item: skill});
+		res.send({success: true, data: skill});
 	});
 });
 
@@ -48,10 +48,8 @@ app.post('/skill/update', function(req, res) {
 
 });
 
-app.post('/skill/delete', function(req, res) {
-	var id = '56d70589c07c4a6454f36c38';
-	
-	Skill.remove({_id: id}, function(err) {
+app.post('/skill/delete', function(req, res) {	
+	Skill.remove({_id: req.body._id}, function(err) {
 		err && console.log(err);
 		
 		res.send({success: true});

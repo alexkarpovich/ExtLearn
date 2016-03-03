@@ -4,25 +4,8 @@ Ext.define('Learn.model.Skill', {
 	idProperty: '_id',
 
 	fields: [
-		{name: '_id', type: 'string'},
+		{name: '_id', type: 'string', useNull: true},
 		{name: 'name', type: 'string'},
 		{name: 'description', type: 'string'}
-	],
-
-	proxy: {
-		type: 'ajax',
-		reader: {
-			type: 'json',
-			rootProperty: 'items'
-		},
-		writer: {
-			type: 'json'
-		},
-		api: {
-			create  : '/skill/add',
-		    read    : '/skill',
-		    update  : '/skill/update',
-		    destroy : '/skill/delete'
-		}
-	}
+	]	
 });

@@ -35,8 +35,7 @@ Ext.define('Learn.view.skill.form.SkillForm', {
 			if (skillForm.isValid()) {
 				console.log(skillForm.getFieldValues());
 
-				skillStore.add(skillForm.getFieldValues());
-				skillStore.save();
+				skillStore.insert(0, Ext.create('Learn.model.Skill', skillForm.getFieldValues()));
 
 				this.up('skill-creation-window').hide();
 			}
