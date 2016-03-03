@@ -45,7 +45,11 @@ app.post('/skill/add', function(req, res) {
 });
 
 app.post('/skill/update', function(req, res) {
-
+	var id = req.body._id;
+	delete req.body._id;
+	Skill.update({_id : id}, {$set : req.body}, function(err) {
+		err && console.log('shit happens while updating, yoy nigga');
+	});
 });
 
 app.post('/skill/delete', function(req, res) {	

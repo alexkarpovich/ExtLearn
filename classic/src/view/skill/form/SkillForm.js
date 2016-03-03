@@ -23,21 +23,34 @@ Ext.define('Learn.view.skill.form.SkillForm', {
 		xtype: 'textareafield',
 		name: 'description',
 		fieldLabel: 'Description'
+	}, {
+		xtype: 'hidden',
+		name: 'skillid'
 	}],
 
+
 	buttons: [{
-		text: 'Create',
-		formBind: true, 
+		text: 'Save',
+		formBind: true,
 		handler: function() {
 			var skillForm = this.up('skill-form').getForm();
 			var skillStore = Ext.data.StoreManager.lookup('skill');
 
-			if (skillForm.isValid()) {
-				console.log(skillForm.getFieldValues());
-
-				skillStore.insert(0, Ext.create('Learn.model.Skill', skillForm.getFieldValues()));
-
+			if (this.up('skill-creation-window').getIsEdit()) {
+				skillStore.each(function(record, idx) {
+					var val = record.get('_id');
+					if (val == skillForm.findField('skillid').getValue()) {
+						record.set('name', skillForm.findField('name').getValue());
+						record.set('description', skillForm.findField('description').getValue());
+						record.save();
+					}
+				});
 				this.up('skill-creation-window').hide();
+			} else {
+				if (skillForm.isValid()) {
+					skillStore.insert(0, Ext.create('Learn.model.Skill', skillForm.getFieldValues()));
+					this.up('skill-creation-window').hide();
+				}
 			}
 		}
 	}, {

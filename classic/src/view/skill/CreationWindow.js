@@ -13,6 +13,10 @@ Ext.define('Learn.view.skill.CreationWindow', {
 
 	layout: 'fit',
 
+	getIsEdit: function() {
+		return this.isEdit;
+	},
+
 	items: [{
 		xtype: 'skill-form'
 	}]
